@@ -258,7 +258,7 @@ const brazilianNames = [
   "Larissa", "Stella", "Camila", "Amanda", "Leticia", "Lara", "Giovanna", "Fernanda", "Bruna", "Vitoria"
 ];
 
-// Função para detectar dispositivos iOS removida - não precisamos mais diferenciar dispositivos
+// Função removida: detecção de dispositivos iOS
 
 function App() {
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
@@ -271,7 +271,7 @@ function App() {
   const [showIframe, setShowIframe] = useState<boolean>(false);
   const [codeCopied, setCodeCopied] = useState<boolean>(false);
   const [codeGeneratedTime, setCodeGeneratedTime] = useState<number | null>(null);
-  // Removemos a detecção de dispositivos iOS
+  // Estado de detecção de iOS removido
   const [chartPosition, setChartPosition] = useState<number>(0);
   const [canGenerateNewCode, setCanGenerateNewCode] = useState<boolean>(true);
   const [timeRemaining, setTimeRemaining] = useState<string>("");
@@ -656,8 +656,6 @@ function App() {
 
   // Verificar se há um código salvo no localStorage ao carregar a página
   useEffect(() => {
-    // Não detectamos mais dispositivos iOS - mostramos o iframe para todos
-
     const savedData = localStorage.getItem('cyberCodeData');
     if (savedData) {
       const parsedData = JSON.parse(savedData);
@@ -1019,10 +1017,10 @@ function App() {
 
               <div className="pt-12 w-full overflow-hidden iframe-container" style={{ position: 'relative', height: 'auto', minHeight: '500px' }}>
                 <iframe
-                  src="/proxy?url=https://capitalbinary.io/pt/signUp"
+                  src="https://capitalbinary.io/pt/signUp"
                   className="w-full h-full"
                   title="Corretora"
-                  allow="cookies; fullscreen"
+                  allow="cookies"
                   referrerPolicy="no-referrer-when-downgrade"
                   sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-storage-access-by-user-activation allow-modals allow-downloads allow-popups-to-escape-sandbox"
                   style={{
