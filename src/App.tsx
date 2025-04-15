@@ -258,19 +258,7 @@ const brazilianNames = [
   "Larissa", "Stella", "Camila", "Amanda", "Leticia", "Lara", "Giovanna", "Fernanda", "Bruna", "Vitoria"
 ];
 
-// Função para detectar dispositivos iOS
-const isIOS = () => {
-  return [
-    'iPad Simulator',
-    'iPhone Simulator',
-    'iPod Simulator',
-    'iPad',
-    'iPhone',
-    'iPod'
-  ].includes(navigator.platform)
-  // iPad no iOS 13 detecta como Mac
-  || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
-};
+// Função para detectar dispositivos iOS removida - não precisamos mais diferenciar dispositivos
 
 function App() {
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
@@ -283,7 +271,7 @@ function App() {
   const [showIframe, setShowIframe] = useState<boolean>(false);
   const [codeCopied, setCodeCopied] = useState<boolean>(false);
   const [codeGeneratedTime, setCodeGeneratedTime] = useState<number | null>(null);
-  const [isIOSDevice, setIsIOSDevice] = useState<boolean>(false);
+  // Removemos a detecção de dispositivos iOS
   const [chartPosition, setChartPosition] = useState<number>(0);
   const [canGenerateNewCode, setCanGenerateNewCode] = useState<boolean>(true);
   const [timeRemaining, setTimeRemaining] = useState<string>("");
@@ -666,10 +654,9 @@ function App() {
     };
   }, [generateRandomNotification]);
 
-  // Verificar se há um código salvo no localStorage ao carregar a página e detectar dispositivo iOS
+  // Verificar se há um código salvo no localStorage ao carregar a página
   useEffect(() => {
-    // Detectar se é um dispositivo iOS
-    setIsIOSDevice(isIOS());
+    // Não detectamos mais dispositivos iOS - mostramos o iframe para todos
 
     const savedData = localStorage.getItem('cyberCodeData');
     if (savedData) {
@@ -1031,50 +1018,21 @@ function App() {
               </div>
 
               <div className="pt-12 w-full overflow-hidden iframe-container" style={{ position: 'relative', height: 'auto', minHeight: '500px' }}>
-                {isIOSDevice ? (
-                  // Mensagem especial para dispositivos iOS
-                  <div className="flex flex-col items-center justify-center h-[650px] p-6 bg-[#0f1520] border border-[#00c3ff]/30 rounded-md">
-                    <div className="text-[#00c3ff] text-4xl mb-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                      </svg>
-                      <h2 className="text-center font-bold">Atenção</h2>
-                    </div>
-
-                    <p className="text-white text-center mb-8">
-                      Detectamos que você está usando um dispositivo iOS.Para uma melhor experiência, recomendamos abrir a corretora diretamente em uma nova aba do seu navegador.
-                    </p>
-                    <a
-                      href="/proxy?url=https://capitalbinary.io/pt/signUp"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-6 py-3 rounded-md bg-gradient-to-r from-[#0066ff] to-[#00c3ff] hover:from-[#0066ff]/90 hover:to-[#00c3ff]/90 transition-all flex items-center gap-2 justify-center shadow-md shadow-[#0066ff]/20 border border-[#00c3ff]/30 text-white font-bold"
-                      onClick={playClickSound}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                      Abrir em Nova Aba
-                    </a>
-                  </div>
-                ) : (
-                  // Iframe normal para outros dispositivos
-                  <iframe
-                    src="/proxy?url=https://capitalbinary.io/pt/signUp"
-                    className="w-full h-full"
-                    title="Corretora"
-                    allow="cookies; fullscreen"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-storage-access-by-user-activation allow-modals allow-downloads allow-popups-to-escape-sandbox"
-                    style={{
-                      overflow: 'auto',
-                      border: 'none',
-                      width: '100%',
-                      height: '650px',
-                      display: 'block'
-                    }}
-                  />
-                )}
+                <iframe
+                  src="/proxy?url=https://capitalbinary.io/pt/signUp"
+                  className="w-full h-full"
+                  title="Corretora"
+                  allow="cookies; fullscreen"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-storage-access-by-user-activation allow-modals allow-downloads allow-popups-to-escape-sandbox"
+                  style={{
+                    overflow: 'auto',
+                    border: 'none',
+                    width: '100%',
+                    height: '650px',
+                    display: 'block'
+                  }}
+                />
               </div>
             </div>
           )}
