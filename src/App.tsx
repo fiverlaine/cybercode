@@ -1045,7 +1045,7 @@ function App() {
                       Detectamos que você está usando um dispositivo iOS.Para uma melhor experiência, recomendamos abrir a corretora diretamente em uma nova aba do seu navegador.
                     </p>
                     <a
-                      href="https://capitalbinary.io/pt/signUp"
+                      href="/proxy?url=https://capitalbinary.io/pt/signUp"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-6 py-3 rounded-md bg-gradient-to-r from-[#0066ff] to-[#00c3ff] hover:from-[#0066ff]/90 hover:to-[#00c3ff]/90 transition-all flex items-center gap-2 justify-center shadow-md shadow-[#0066ff]/20 border border-[#00c3ff]/30 text-white font-bold"
@@ -1060,10 +1060,10 @@ function App() {
                 ) : (
                   // Iframe normal para outros dispositivos
                   <iframe
-                    src="https://capitalbinary.io/pt/signUp"
+                    src="/proxy?url=https://capitalbinary.io/pt/signUp"
                     className="w-full h-full"
                     title="Corretora"
-                    allow="cookies"
+                    allow="cookies; fullscreen"
                     referrerPolicy="no-referrer-when-downgrade"
                     sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-storage-access-by-user-activation allow-modals allow-downloads allow-popups-to-escape-sandbox"
                     style={{
@@ -1081,7 +1081,7 @@ function App() {
         </div>
 
         <footer className="mt-16 text-center">
-          
+
 
           <p className="text-gray-400 text-xs font-light tracking-wider">
             <span className="">&lt;</span>
