@@ -286,7 +286,7 @@ function App() {
 
   // Função para obter uma cor aleatória para os caracteres durante o embaralhamento
   const getRandomColor = () => {
-    const colors = ['text-green-400', 'text-cyan-400', 'text-yellow-400', 'text-red-400', 'text-blue-400'];
+    const colors = ['text-[#2a9d8f]', 'text-[#3a86b8]', 'text-[#457b9d]', 'text-[#264653]', 'text-[#1d3557]'];
     return colors[Math.floor(Math.random() * colors.length)];
   };
 
@@ -736,32 +736,30 @@ function App() {
       <div className="w-full px-4 py-8 relative z-10 max-w-[95%] lg:max-w-[90%] xl:max-w-[85%] 2xl:max-w-[80%] mx-auto">
         <header className="text-center mb-12">
           <div className="relative inline-block">
-            {/* Efeito de brilho ao redor do título */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#00ff4c] via-[#00c3ff] to-[#ff3c3c] rounded-lg blur opacity-20"></div>
+            {/* Efeito de brilho ao redor do título - mais sutil */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#1a3a2a] via-[#1a3a4a] to-[#1a3a4a] rounded-lg blur opacity-20"></div>
 
-            {/* Efeito de binários ao redor do título */}
+            {/* Efeito de binários ao redor do título - reduzido e mais sutil */}
             <div className="absolute -inset-8 flex items-center justify-center">
-              <div className="text-[#00ff4c] text-xs absolute animate-pulse" style={{ top: '0%', left: '0%', animationDelay: '0.5s' }}>1</div>
-              <div className="text-[#ff3c3c] text-xs absolute animate-pulse" style={{ top: '20%', right: '10%', animationDelay: '1.2s' }}>0</div>
-              <div className="text-[#00ff4c] text-xs absolute animate-pulse" style={{ bottom: '30%', left: '5%', animationDelay: '0.7s' }}>1</div>
-              <div className="text-[#ff3c3c] text-xs absolute animate-pulse" style={{ bottom: '10%', right: '0%', animationDelay: '1.5s' }}>0</div>
-              <div className="text-[#00c3ff] text-xs absolute animate-pulse" style={{ top: '40%', left: '20%', animationDelay: '0.9s' }}>1</div>
-              <div className="text-[#00ff4c] text-xs absolute animate-pulse" style={{ top: '10%', right: '30%', animationDelay: '1.1s' }}>1</div>
+              <div className="text-[#1a3a2a] text-xs absolute animate-pulse" style={{ top: '0%', left: '0%', animationDelay: '0.5s' }}>1</div>
+              <div className="text-[#1a3a4a] text-xs absolute animate-pulse" style={{ top: '20%', right: '10%', animationDelay: '1.2s' }}>0</div>
+              <div className="text-[#1a3a2a] text-xs absolute animate-pulse" style={{ bottom: '30%', left: '5%', animationDelay: '0.7s' }}>1</div>
+              <div className="text-[#1a3a4a] text-xs absolute animate-pulse" style={{ bottom: '10%', right: '0%', animationDelay: '1.5s' }}>0</div>
             </div>
 
-            <h1 className="relative text-5xl md:text-6xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#00ff4c] via-[#00c3ff] to-[#00ff4c] tracking-tight">
+            <h1 className="relative text-5xl md:text-6xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#2a9d8f] via-[#3a86b8] to-[#2a9d8f] tracking-tight">
   CYBERCODE
 </h1>
 
           </div>
 
-          <p className="text-[#00c3ff] text-[10px] md:text-xs font-light tracking-wider">
+          <p className="text-[#3a86b8] text-[10px] md:text-xs font-light tracking-wider">
             [ Gerador de Código Seguro ]
           </p>
 
-          {/* Separador com efeito de gradiente */}
-          <div className="relative w-40 h-0.5 bg-gradient-to-r from-[#00ff4c]/50 via-[#00c3ff]/80 to-[#ff3c3c]/50 mx-auto mt-6 rounded-full overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent animate-pulse"></div>
+          {/* Separador com efeito de gradiente - mais sutil */}
+          <div className="relative w-40 h-0.5 bg-gradient-to-r from-[#2a9d8f]/30 via-[#3a86b8]/50 to-[#2a9d8f]/30 mx-auto mt-6 rounded-full overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
           </div>
 
           {/* Removido o indicador de opções binárias */}
@@ -782,17 +780,17 @@ function App() {
                       playClickSound();
                     }}
                     disabled={isGenerating || codeTypingEffect || codeShufflingEffect}
-                    className={`relative w-full overflow-hidden px-8 ${!canGenerateNewCode && timeRemaining ? 'py-3' : 'py-4'} rounded-lg font-bold ${!canGenerateNewCode && timeRemaining ? 'text-lg' : 'text-xl'} uppercase tracking-wider text-center transition-all duration-300 border border-[#00c3ff]/50 bg-gradient-to-b from-[#0a0e17]/90 to-[#0f1520]/90 hover:from-[#0f1520]/90 hover:to-[#0a0e17]/90 hover:border-[#00c3ff] focus:outline-none focus:ring-2 focus:ring-[#00c3ff] focus:ring-opacity-50 disabled:opacity-70 group mx-auto block backdrop-blur-sm shadow-lg shadow-[#00c3ff]/20`}
+                    className={`relative w-full overflow-hidden px-8 ${!canGenerateNewCode && timeRemaining ? 'py-3' : 'py-4'} rounded-lg font-bold ${!canGenerateNewCode && timeRemaining ? 'text-lg' : 'text-xl'} uppercase tracking-wider text-center transition-all duration-300 border border-[#3a86b8]/30 bg-gradient-to-b from-[#0a0e17]/90 to-[#0f1520]/90 hover:from-[#0f1520]/90 hover:to-[#0a0e17]/90 hover:border-[#3a86b8]/50 focus:outline-none focus:ring-2 focus:ring-[#3a86b8] focus:ring-opacity-50 disabled:opacity-70 group mx-auto block backdrop-blur-sm shadow-lg shadow-[#3a86b8]/10`}
                   >
                     {/* Efeito de brilho nos cantos do botão */}
-                    <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#00c3ff]"></div>
-                    <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#00c3ff]"></div>
-                    <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#00c3ff]"></div>
-                    <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#00c3ff]"></div>
+                    <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#3a86b8]"></div>
+                    <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#3a86b8]"></div>
+                    <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#3a86b8]"></div>
+                    <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#3a86b8]"></div>
 
                     {/* Indicadores binários nos cantos */}
-                    <div className="absolute top-1 left-2 text-[#00ff4c]/20 text-xs">1</div>
-                    <div className="absolute bottom-1 right-2 text-[#ff3c3c]/20 text-xs">0</div>
+                    <div className="absolute top-1 left-2 text-[#2a9d8f]/20 text-xs">1</div>
+                    <div className="absolute bottom-1 right-2 text-[#3a86b8]/20 text-xs">0</div>
                     <span className="relative z-10">
                       {isGenerating ? (
                         <div className="flex items-center justify-center">
@@ -808,37 +806,37 @@ function App() {
                         </div>
                       )}
                     </span>
-                    <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-green-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-cyan-500"></div>
+                    <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-[#2a9d8f]/10 to-[#3a86b8]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#2a9d8f] to-[#3a86b8]"></div>
                   </button>
                 </div>
               )}
             </div>
 
             {displayedCode && (
-              <div className="backdrop-blur-sm bg-[#0f1520]/90 border border-[#00c3ff]/30 rounded-lg overflow-hidden transition-all duration-500 animate-fadeIn shadow-xl shadow-[#00c3ff]/20 relative">
+              <div className="backdrop-blur-sm bg-[#0f1520]/90 border border-[#3a86b8]/20 rounded-lg overflow-hidden transition-all duration-500 animate-fadeIn shadow-xl shadow-[#3a86b8]/10 relative">
                 {/* Efeito de brilho nos cantos */}
-                <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#00c3ff] rounded-tl-lg"></div>
-                <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#00c3ff] rounded-tr-lg"></div>
-                <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[#00c3ff] rounded-bl-lg"></div>
-                <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#00c3ff] rounded-br-lg"></div>
+                <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#3a86b8] rounded-tl-lg"></div>
+                <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#3a86b8] rounded-tr-lg"></div>
+                <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[#3a86b8] rounded-bl-lg"></div>
+                <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#3a86b8] rounded-br-lg"></div>
 
                 {/* Efeito de binários no fundo */}
-                <div className="absolute top-1/4 left-1/4 text-[#00ff4c]/10 text-4xl font-bold">1</div>
-                <div className="absolute bottom-1/4 right-1/4 text-[#ff3c3c]/10 text-4xl font-bold">0</div>
+                <div className="absolute top-1/4 left-1/4 text-[#2a9d8f]/10 text-4xl font-bold">1</div>
+                <div className="absolute bottom-1/4 right-1/4 text-[#3a86b8]/10 text-4xl font-bold">0</div>
                 {/* Efeito de brilho no topo */}
-                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00c3ff] to-transparent"></div>
+                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#3a86b8] to-transparent"></div>
 
-                <div className="p-3 bg-[#0a0e17]/90 border-b border-[#00c3ff]/30 flex justify-between items-center">
+                <div className="p-3 bg-[#0a0e17]/90 border-b border-[#3a86b8]/20 flex justify-between items-center">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-[#ff3c3c]"></div>
-                    <div className="w-2 h-2 rounded-full bg-[#ffcc00]"></div>
-                    <div className="w-2 h-2 rounded-full bg-[#00ff4c] animate-pulse"></div>
+                    <div className="w-2 h-2 rounded-full bg-[#e63946]"></div>
+                    <div className="w-2 h-2 rounded-full bg-[#f1c453]"></div>
+                    <div className="w-2 h-2 rounded-full bg-[#2a9d8f] animate-pulse"></div>
                   </div>
-                  <span className="text-xs text-[#00c3ff] font-semibold tracking-wider">GERADOR</span>
+                  <span className="text-xs text-[#3a86b8] font-semibold tracking-wider">GERADOR</span>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-[#00c3ff]">ATIVO</span>
-                    <div className="w-2 h-2 rounded-full bg-[#00ff4c] animate-pulse"></div>
+                    <span className="text-xs text-[#3a86b8]">ATIVO</span>
+                    <div className="w-2 h-2 rounded-full bg-[#2a9d8f] animate-pulse"></div>
                   </div>
                 </div>
 
@@ -862,79 +860,79 @@ function App() {
                         ))}
 
                         {/* Velas de opções binárias - Primeira metade */}
-                        <rect x="10" y="6" width="3" height="6" fill="#00ff4c" />
-                        <line x1="11.5" y1="4" x2="11.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
+                        <rect x="10" y="6" width="3" height="6" fill="#2a9d8f" />
+                        <line x1="11.5" y1="4" x2="11.5" y2="14" stroke="#2a9d8f" strokeWidth="0.5" />
 
-                        <rect x="20" y="8" width="3" height="6" fill="#ff3c3c" />
-                        <line x1="21.5" y1="6" x2="21.5" y2="16" stroke="#ff3c3c" strokeWidth="0.5" />
+                        <rect x="20" y="8" width="3" height="6" fill="#e63946" />
+                        <line x1="21.5" y1="6" x2="21.5" y2="16" stroke="#e63946" strokeWidth="0.5" />
 
-                        <rect x="30" y="5" width="3" height="7" fill="#00ff4c" />
-                        <line x1="31.5" y1="3" x2="31.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
+                        <rect x="30" y="5" width="3" height="7" fill="#2a9d8f" />
+                        <line x1="31.5" y1="3" x2="31.5" y2="14" stroke="#2a9d8f" strokeWidth="0.5" />
 
-                        <rect x="40" y="9" width="3" height="5" fill="#ff3c3c" />
-                        <line x1="41.5" y1="7" x2="41.5" y2="16" stroke="#ff3c3c" strokeWidth="0.5" />
+                        <rect x="40" y="9" width="3" height="5" fill="#e63946" />
+                        <line x1="41.5" y1="7" x2="41.5" y2="16" stroke="#e63946" strokeWidth="0.5" />
 
-                        <rect x="50" y="4" width="3" height="8" fill="#00ff4c" />
-                        <line x1="51.5" y1="2" x2="51.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
+                        <rect x="50" y="4" width="3" height="8" fill="#2a9d8f" />
+                        <line x1="51.5" y1="2" x2="51.5" y2="14" stroke="#2a9d8f" strokeWidth="0.5" />
 
-                        <rect x="60" y="10" width="3" height="4" fill="#ff3c3c" />
-                        <line x1="61.5" y1="8" x2="61.5" y2="16" stroke="#ff3c3c" strokeWidth="0.5" />
+                        <rect x="60" y="10" width="3" height="4" fill="#e63946" />
+                        <line x1="61.5" y1="8" x2="61.5" y2="16" stroke="#e63946" strokeWidth="0.5" />
 
-                        <rect x="70" y="6" width="3" height="6" fill="#00ff4c" />
-                        <line x1="71.5" y1="4" x2="71.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
+                        <rect x="70" y="6" width="3" height="6" fill="#2a9d8f" />
+                        <line x1="71.5" y1="4" x2="71.5" y2="14" stroke="#2a9d8f" strokeWidth="0.5" />
 
-                        <rect x="80" y="9" width="3" height="5" fill="#ff3c3c" />
-                        <line x1="81.5" y1="7" x2="81.5" y2="16" stroke="#ff3c3c" strokeWidth="0.5" />
+                        <rect x="80" y="9" width="3" height="5" fill="#e63946" />
+                        <line x1="81.5" y1="7" x2="81.5" y2="16" stroke="#e63946" strokeWidth="0.5" />
 
-                        <rect x="90" y="5" width="3" height="7" fill="#00ff4c" />
-                        <line x1="91.5" y1="3" x2="91.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
+                        <rect x="90" y="5" width="3" height="7" fill="#2a9d8f" />
+                        <line x1="91.5" y1="3" x2="91.5" y2="14" stroke="#2a9d8f" strokeWidth="0.5" />
 
                         {/* Velas de opções binárias - Segunda metade (espelhada para continuar o padrão) */}
-                        <rect x="110" y="6" width="3" height="6" fill="#00ff4c" />
-                        <line x1="111.5" y1="4" x2="111.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
+                        <rect x="110" y="6" width="3" height="6" fill="#2a9d8f" />
+                        <line x1="111.5" y1="4" x2="111.5" y2="14" stroke="#2a9d8f" strokeWidth="0.5" />
 
-                        <rect x="120" y="8" width="3" height="6" fill="#ff3c3c" />
-                        <line x1="121.5" y1="6" x2="121.5" y2="16" stroke="#ff3c3c" strokeWidth="0.5" />
+                        <rect x="120" y="8" width="3" height="6" fill="#e63946" />
+                        <line x1="121.5" y1="6" x2="121.5" y2="16" stroke="#e63946" strokeWidth="0.5" />
 
-                        <rect x="130" y="5" width="3" height="7" fill="#00ff4c" />
-                        <line x1="131.5" y1="3" x2="131.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
+                        <rect x="130" y="5" width="3" height="7" fill="#2a9d8f" />
+                        <line x1="131.5" y1="3" x2="131.5" y2="14" stroke="#2a9d8f" strokeWidth="0.5" />
 
-                        <rect x="140" y="9" width="3" height="5" fill="#ff3c3c" />
-                        <line x1="141.5" y1="7" x2="141.5" y2="16" stroke="#ff3c3c" strokeWidth="0.5" />
+                        <rect x="140" y="9" width="3" height="5" fill="#e63946" />
+                        <line x1="141.5" y1="7" x2="141.5" y2="16" stroke="#e63946" strokeWidth="0.5" />
 
-                        <rect x="150" y="4" width="3" height="8" fill="#00ff4c" />
-                        <line x1="151.5" y1="2" x2="151.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
+                        <rect x="150" y="4" width="3" height="8" fill="#2a9d8f" />
+                        <line x1="151.5" y1="2" x2="151.5" y2="14" stroke="#2a9d8f" strokeWidth="0.5" />
 
-                        <rect x="160" y="10" width="3" height="4" fill="#ff3c3c" />
-                        <line x1="161.5" y1="8" x2="161.5" y2="16" stroke="#ff3c3c" strokeWidth="0.5" />
+                        <rect x="160" y="10" width="3" height="4" fill="#e63946" />
+                        <line x1="161.5" y1="8" x2="161.5" y2="16" stroke="#e63946" strokeWidth="0.5" />
 
-                        <rect x="170" y="6" width="3" height="6" fill="#00ff4c" />
-                        <line x1="171.5" y1="4" x2="171.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
+                        <rect x="170" y="6" width="3" height="6" fill="#2a9d8f" />
+                        <line x1="171.5" y1="4" x2="171.5" y2="14" stroke="#2a9d8f" strokeWidth="0.5" />
 
-                        <rect x="180" y="9" width="3" height="5" fill="#ff3c3c" />
-                        <line x1="181.5" y1="7" x2="181.5" y2="16" stroke="#ff3c3c" strokeWidth="0.5" />
+                        <rect x="180" y="9" width="3" height="5" fill="#e63946" />
+                        <line x1="181.5" y1="7" x2="181.5" y2="16" stroke="#e63946" strokeWidth="0.5" />
 
-                        <rect x="190" y="5" width="3" height="7" fill="#00ff4c" />
-                        <line x1="191.5" y1="3" x2="191.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
+                        <rect x="190" y="5" width="3" height="7" fill="#2a9d8f" />
+                        <line x1="191.5" y1="3" x2="191.5" y2="14" stroke="#2a9d8f" strokeWidth="0.5" />
 
                         {/* Linha de tendência */}
-                        <path d="M0,10 L10,9 L20,11 L30,8 L40,12 L50,7 L60,13 L70,9 L80,12 L90,8 L100,10 L110,9 L120,11 L130,8 L140,12 L150,7 L160,13 L170,9 L180,12 L190,8 L200,10" stroke="#00c3ff" strokeWidth="0.5" fill="none" strokeDasharray="2,1" />
+                        <path d="M0,10 L10,9 L20,11 L30,8 L40,12 L50,7 L60,13 L70,9 L80,12 L90,8 L100,10 L110,9 L120,11 L130,8 L140,12 L150,7 L160,13 L170,9 L180,12 L190,8 L200,10" stroke="#3a86b8" strokeWidth="0.5" fill="none" strokeDasharray="2,1" />
                       </svg>
                     </div>
                   </div>
 
-                  <div className="relative bg-[#0a0e17]/90 px-6 py-5 rounded-lg border border-[#00c3ff]/30 mb-6 w-full backdrop-blur-sm">
+                  <div className="relative bg-[#0a0e17]/90 px-6 py-5 rounded-lg border border-[#3a86b8]/20 mb-6 w-full backdrop-blur-sm">
                     {/* Efeito de brilho no topo */}
-                    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00c3ff]/50 to-transparent"></div>
+                    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#3a86b8]/30 to-transparent"></div>
 
                     {/* Indicadores binários nos cantos removidos */}
 
-                    <div className={`text-2xl font-bold tracking-widest text-center ${codeShufflingEffect ? shuffleColor : codeGenerated ? 'text-[#00ff4c]' : 'text-[#00c3ff]'} ${codeTypingEffect ? 'border-r-2 border-[#00c3ff] animate-pulse' : ''}`}>
+                    <div className={`text-2xl font-bold tracking-widest text-center ${codeShufflingEffect ? shuffleColor : codeGenerated ? 'text-[#2a9d8f]' : 'text-[#3a86b8]'} ${codeTypingEffect ? 'border-r-2 border-[#3a86b8] animate-pulse' : ''}`}>
                       {displayedCode}
                     </div>
 
                     {codeGenerated && (
-                      <div className="absolute -right-3 top-1/2 transform -translate-y-1/2 text-[#00c3ff] animate-pulse">
+                      <div className="absolute -right-3 top-1/2 transform -translate-y-1/2 text-[#3a86b8] animate-pulse">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7 7 7-7" />
                         </svg>
@@ -949,7 +947,7 @@ function App() {
                     <div className="w-full space-y-3 animate-fadeIn">
                       {/* Mensagem de confirmação de cópia - posicionada acima do botão */}
                       {codeCopied && (
-                        <div className="bg-[#00ff4c]/90 text-white text-sm md:text-base py-2 px-4 rounded-md shadow-md mb-2 border border-[#00c3ff] animate-fadeIn">
+                        <div className="bg-[#2a9d8f]/90 text-white text-sm md:text-base py-2 px-4 rounded-md shadow-md mb-2 border border-[#3a86b8]/30 animate-fadeIn">
                           <div className="flex items-center justify-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -963,7 +961,7 @@ function App() {
                           handleCopyClick();
                           playClickSound();
                         }}
-                        className="px-4 py-3 rounded-md bg-gradient-to-r from-[#00ff4c]/80 to-[#00c3ff]/80 hover:from-[#00ff4c] hover:to-[#00c3ff] transition-all flex items-center gap-2 w-full justify-center shadow-md shadow-[#00ff4c]/20 border border-[#00c3ff]/30"
+                        className="px-4 py-3 rounded-md bg-gradient-to-r from-[#2a9d8f]/80 to-[#3a86b8]/80 hover:from-[#2a9d8f] hover:to-[#3a86b8] transition-all flex items-center gap-2 w-full justify-center shadow-md shadow-[#2a9d8f]/10 border border-[#3a86b8]/20"
                         title="Copiar código"
                       >
                         <Copy size={20} className="text-white" />
@@ -972,7 +970,7 @@ function App() {
 
                       <button
                         onClick={handleBrokerClick}
-                        className="px-4 py-3 rounded-md bg-gradient-to-r from-[#0066ff]/80 to-[#00c3ff]/80 hover:from-[#0066ff] hover:to-[#00c3ff] transition-all flex items-center gap-2 w-full justify-center shadow-md shadow-[#0066ff]/20 border border-[#00c3ff]/30"
+                        className="px-4 py-3 rounded-md bg-gradient-to-r from-[#3a86b8]/80 to-[#457b9d]/80 hover:from-[#3a86b8] hover:to-[#457b9d] transition-all flex items-center gap-2 w-full justify-center shadow-md shadow-[#3a86b8]/10 border border-[#3a86b8]/20"
                       >
                         <ExternalLink size={20} className="text-white" />
                         <span className="text-white font-bold">Acessar corretora</span>
@@ -986,30 +984,30 @@ function App() {
 
           {/* Iframe da corretora (abaixo do gerador de código) */}
           {showIframe && (
-            <div className="mt-12 w-[calc(100vw-10px)] sm:w-full md:h-auto lg:h-auto xl:h-auto border border-[#00c3ff]/30 rounded-lg relative backdrop-blur-sm bg-[#0a0e17]/90 shadow-xl shadow-[#00c3ff]/20 md:w-[98%] lg:w-[99%] xl:w-[100%] mx-auto" style={{ overflowX: 'hidden', overflowY: 'hidden', position: 'relative', left: '50%', transform: 'translateX(-50%)' }}>
+            <div className="mt-12 w-[calc(100vw-10px)] sm:w-full md:h-auto lg:h-auto xl:h-auto border border-[#3a86b8]/20 rounded-lg relative backdrop-blur-sm bg-[#0a0e17]/90 shadow-xl shadow-[#3a86b8]/10 md:w-[98%] lg:w-[99%] xl:w-[100%] mx-auto" style={{ overflowX: 'hidden', overflowY: 'hidden', position: 'relative', left: '50%', transform: 'translateX(-50%)' }}>
               {/* Efeito de brilho nos cantos */}
-              <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-[#00c3ff] rounded-tl-lg"></div>
-              <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-[#00c3ff] rounded-tr-lg"></div>
-              <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-[#00c3ff] rounded-bl-lg"></div>
-              <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-[#00c3ff] rounded-br-lg"></div>
+              <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-[#3a86b8] rounded-tl-lg"></div>
+              <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-[#3a86b8] rounded-tr-lg"></div>
+              <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-[#3a86b8] rounded-bl-lg"></div>
+              <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-[#3a86b8] rounded-br-lg"></div>
 
               {/* Efeito de brilho no topo */}
-              <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00c3ff] to-transparent"></div>
+              <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#3a86b8] to-transparent"></div>
 
               {/* Indicadores binários nos cantos */}
-              <div className="absolute top-10 left-6 text-[#00ff4c]/10 text-4xl font-bold">1</div>
-              <div className="absolute bottom-10 right-6 text-[#ff3c3c]/10 text-4xl font-bold">0</div>
+              <div className="absolute top-10 left-6 text-[#2a9d8f]/10 text-4xl font-bold">1</div>
+              <div className="absolute bottom-10 right-6 text-[#3a86b8]/10 text-4xl font-bold">0</div>
 
-              <div className="absolute top-0 left-0 w-full bg-[#0f1520]/90 p-3 flex justify-between items-center z-10 border-b border-[#00c3ff]/30">
+              <div className="absolute top-0 left-0 w-full bg-[#0f1520]/90 p-3 flex justify-between items-center z-10 border-b border-[#3a86b8]/20">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-[#ff3c3c]"></div>
-                  <div className="w-2 h-2 rounded-full bg-[#ffcc00]"></div>
-                  <div className="w-2 h-2 rounded-full bg-[#00ff4c]"></div>
+                  <div className="w-2 h-2 rounded-full bg-[#e63946]"></div>
+                  <div className="w-2 h-2 rounded-full bg-[#f1c453]"></div>
+                  <div className="w-2 h-2 rounded-full bg-[#2a9d8f]"></div>
                 </div>
-                <span className="text-xs text-[#00c3ff] font-semibold tracking-wider">CORRETORA</span>
+                <span className="text-xs text-[#3a86b8] font-semibold tracking-wider">CORRETORA</span>
                 <button
                   onClick={handleRefreshIframe}
-                  className="text-[#00c3ff] hover:text-[#00c3ff]/80 text-xs px-3 py-1 rounded-md hover:bg-[#0a0e17]/90 border border-[#00c3ff]/30 transition-colors"
+                  className="text-[#3a86b8] hover:text-[#3a86b8]/80 text-xs px-3 py-1 rounded-md hover:bg-[#0a0e17]/90 border border-[#3a86b8]/20 transition-colors"
                 >
                   ATUALIZAR
                 </button>
