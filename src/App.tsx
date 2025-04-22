@@ -290,6 +290,27 @@ function App() {
     return colors[Math.floor(Math.random() * colors.length)];
   };
 
+  // Função para gerar um código aleatório no formato L###L (Letra, 3 números, Letra)
+  const generateRandomCode = () => {
+    // Gerar letra maiúscula aleatória (A-Z)
+    const getRandomLetter = () => {
+      const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      return letters.charAt(Math.floor(Math.random() * letters.length));
+    };
+    
+    // Gerar dígito aleatório (0-9)
+    const getRandomDigit = () => Math.floor(Math.random() * 10).toString();
+    
+    // Construir o código: Letra + 3 Dígitos + Letra
+    const code = getRandomLetter() + 
+                getRandomDigit() + 
+                getRandomDigit() + 
+                getRandomDigit() + 
+                getRandomLetter();
+                
+    return code;
+  };
+
   // Função para simular efeito de embaralhamento para o código de segurança
   const simulateCodeShuffling = () => {
     setCodeShufflingEffect(true);
@@ -310,7 +331,7 @@ function App() {
       if (iterations >= maxIterations) {
         clearInterval(shuffleInterval);
         setCodeShufflingEffect(false);
-        simulateCodeTyping("H785X");
+        simulateCodeTyping(generateRandomCode());
       }
     }, 50); // Reduzido para tornar a animação mais rápida
   };
@@ -481,7 +502,7 @@ function App() {
 
   // Efeito sonoro para cliques
   const playClickSound = () => {
-    const audio = new Audio('data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQxAAAAAAAAAAAAAAAAAAAAAAASW5mbwAAAA8AAAAGAAADQAAoKCgoKCgoKCgoKCg+Pj4+Pj4+Pj4+Pj4+PmRkZGRkZGRkZGRkZGRkeHh4eHh4eHh4eHh4eHiOjo6Ojo6Ojo6Ojo6OjqSkpKSkpKSkpKSkpKSk//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAUHQ//7UMQAAAqsITe0EQAh2wml7IggBExccXcDgcA4HA4gQEBAQO4fB+H8Pn/o/D4fwfh8/9H4fB+D8Pn/o/D4fwfh8/9AgICAgIHcDgcDgcBAQEBATicTicQAAAABzicTiAAAAAHE4nE4gAAAABxOJxOIAAAAAcTicTiAAAAAHE4nE4gAAAABxOJxOIAAAAA//sQxJYAC9RjL7mXgCGAjGb3MvAEcTicTiAAAAAHE4nE4gAAAABxOJxOIAAAAAcTicTiAAAAAHE4nE4gAAAABxOJxOIAAAAAcTicTiAAAAAHE4nE4gAAAABxOJxOIAAAAAcTicTiAAAAA=');
+    const audio = new Audio('data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQxAAAAAAAAAAAAAAAAAAAAAAASW5mbwAAAA8AAAAGAAADQAAoKCgoKCgoKCgoKCg+Pj4+Pj4+Pj4+Pj4+PmRkZGRkZGRkZGRkZGRkeHh4eHh4eHh4eHh4eHiOjo6Ojo6Ojo6Ojo6OjqSkpKSkpKSkpKSkpKSk//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAUHQ//7UMQAAAqsITe0EQAh2wml7IggBExccXcDgcA4HA4gQEBAQO4fB+H8Pn/o/D4fwfh8/9H4fB+D8Pn/o/D4fwfh8/9AgICAgIHcDgcDgcBAQEBATicTicQAAAABzicTiAAAAAHE4nE4gAAAABxOJxOIAAAAAcTicTiAAAAAHE4nE4gAAAABxOJxOIAAAAA//sQxJYAC9RjL7mXgCGAjGb3MvAEcTicTiAAAAAHE4nE4gAAAABxOJxOIAAAAAcTicTiAAAAAHE4nE4gAAAABxOJxOIAAAAAcTicTiAAAAAHE4nE4gAAAABxOJxOIAAAAAcTicTiAAAAAHE4nE4gAAAABxOJxOIAAAAAcTicTiAAAAA=');
     audio.volume = 0.2;
     audio.play().catch(e => console.error("Erro ao reproduzir som:", e));
   };
