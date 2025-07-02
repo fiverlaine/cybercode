@@ -1036,7 +1036,7 @@ function App() {
 
               <div className="pt-12 w-full overflow-hidden iframe-container" style={{ position: 'relative', height: 'auto', minHeight: '500px' }}>
                 <iframe
-                  src="https://capitalbinary.io/pt/signUp"
+                  src="https://capitalbinary.app/pt/signUp"
                   className="w-full h-full"
                   title="Corretora"
                   allow="cookies"
