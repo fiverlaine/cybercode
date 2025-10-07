@@ -7,7 +7,7 @@
 }
 
 html {
-  background-color: #0a0e17;
+  background-color: #080619;
 }
 
 body {
@@ -15,7 +15,7 @@ body {
   font-family: 'Space Mono', 'Courier New', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #0a0e17;
+  background-color: #080619;
   overflow-x: hidden;
   min-height: 100vh;
   /* Garantir que o background se estenda até o topo no iOS */
@@ -62,14 +62,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f1118;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #20c997;
+  background: #5010FF;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #15e6b5;
+  background: #6020FF;
 }
