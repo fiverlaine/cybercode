@@ -59,9 +59,9 @@ const MatrixBackground = () => {
     const binaryDigits: { x: number; y: number; value: string; size: number; opacity: number; speed: number }[] = [];
     const digitCount = 50; // Número de dígitos binários
 
-    // Cores para o tema roxo
-    const upColor = '#5010FF'; // Roxo para alta
-    const downColor = '#5010FF'; // Roxo para baixa
+    // Cores para os candles
+    const upColor = '#00ff4c'; // Verde para alta
+    const downColor = '#ff3c3c'; // Vermelho para baixa
 
     // Inicializar padrões de velas
     for (let i = 0; i < patternCount; i++) {
@@ -117,8 +117,8 @@ const MatrixBackground = () => {
       candlePatterns.forEach(candle => {
         // Desenhar o corpo da vela
         context.fillStyle = candle.type === 'up' ?
-          `rgba(80, 16, 255, ${candle.opacity})` :
-          `rgba(80, 16, 255, ${candle.opacity * 0.7})`;
+          `rgba(0, 255, 76, ${candle.opacity})` :
+          `rgba(255, 60, 60, ${candle.opacity})`;
 
         context.fillRect(
           candle.x,
@@ -132,8 +132,8 @@ const MatrixBackground = () => {
         context.moveTo(candle.x + candle.width / 2, candle.y - candle.height * 0.3);
         context.lineTo(candle.x + candle.width / 2, candle.y + candle.height * 1.3);
         context.strokeStyle = candle.type === 'up' ?
-          `rgba(80, 16, 255, ${candle.opacity * 0.7})` :
-          `rgba(80, 16, 255, ${candle.opacity * 0.5})`;
+          `rgba(0, 255, 76, ${candle.opacity * 0.7})` :
+          `rgba(255, 60, 60, ${candle.opacity * 0.7})`;
         context.lineWidth = 1;
         context.stroke();
 
@@ -155,8 +155,8 @@ const MatrixBackground = () => {
       binaryDigits.forEach(digit => {
         context.font = `${digit.size}px monospace`;
         context.fillStyle = digit.value === '1' ?
-          `rgba(80, 16, 255, ${digit.opacity})` :
-          `rgba(80, 16, 255, ${digit.opacity * 0.7})`;
+          `rgba(0, 255, 76, ${digit.opacity})` :
+          `rgba(255, 60, 60, ${digit.opacity})`;
         context.fillText(digit.value, digit.x, digit.y);
 
         // Mover dígitos para baixo
@@ -188,11 +188,11 @@ const MatrixBackground = () => {
         context.lineTo(x, y);
       }
 
-      context.strokeStyle = `rgba(80, 16, 255, 0.2)`;
+      context.strokeStyle = `rgba(0, 255, 76, 0.2)`;
       context.lineWidth = 2;
       context.stroke();
 
-      // Linha de gráfico roxa (baixa)
+      // Linha de gráfico vermelha (baixa)
       context.beginPath();
       context.moveTo(0, canvas.height * 0.7 + Math.cos(Date.now() * 0.001) * 50);
 
@@ -201,7 +201,7 @@ const MatrixBackground = () => {
         context.lineTo(x, y);
       }
 
-      context.strokeStyle = `rgba(80, 16, 255, 0.15)`;
+      context.strokeStyle = `rgba(255, 60, 60, 0.2)`;
       context.lineWidth = 2;
       context.stroke();
     };
@@ -856,70 +856,70 @@ function App() {
                         <rect x="0" y="0" width="200" height="20" fill="#080619" opacity="0.5" />
 
                         {/* Linhas de grade */}
-                        <path d="M0,5 L200,5" stroke="#5010FF" strokeWidth="0.2" strokeDasharray="1,1" />
-                        <path d="M0,10 L200,10" stroke="#5010FF" strokeWidth="0.2" strokeDasharray="1,1" />
-                        <path d="M0,15 L200,15" stroke="#5010FF" strokeWidth="0.2" strokeDasharray="1,1" />
+                        <path d="M0,5 L200,5" stroke="#00ff4c" strokeWidth="0.2" strokeDasharray="1,1" />
+                        <path d="M0,10 L200,10" stroke="#00ff4c" strokeWidth="0.2" strokeDasharray="1,1" />
+                        <path d="M0,15 L200,15" stroke="#00ff4c" strokeWidth="0.2" strokeDasharray="1,1" />
 
                         {/* Linhas de grade verticais */}
                         {Array.from({ length: 20 }).map((_, i) => (
-                          <path key={i} d={`M${i * 10},0 L${i * 10},20`} stroke="#5010FF" strokeWidth="0.2" strokeDasharray="1,1" />
+                          <path key={i} d={`M${i * 10},0 L${i * 10},20`} stroke="#00ff4c" strokeWidth="0.2" strokeDasharray="1,1" />
                         ))}
 
                         {/* Velas de opções binárias - Primeira metade */}
-                        <rect x="10" y="6" width="3" height="6" fill="#5010FF" />
-                        <line x1="11.5" y1="4" x2="11.5" y2="14" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="10" y="6" width="3" height="6" fill="#00ff4c" />
+                        <line x1="11.5" y1="4" x2="11.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
 
-                        <rect x="20" y="8" width="3" height="6" fill="#5010FF" />
-                        <line x1="21.5" y1="6" x2="21.5" y2="16" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="20" y="8" width="3" height="6" fill="#ff3c3c" />
+                        <line x1="21.5" y1="6" x2="21.5" y2="16" stroke="#ff3c3c" strokeWidth="0.5" />
 
-                        <rect x="30" y="5" width="3" height="7" fill="#5010FF" />
-                        <line x1="31.5" y1="3" x2="31.5" y2="14" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="30" y="5" width="3" height="7" fill="#00ff4c" />
+                        <line x1="31.5" y1="3" x2="31.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
 
-                        <rect x="40" y="9" width="3" height="5" fill="#5010FF" />
-                        <line x1="41.5" y1="7" x2="41.5" y2="16" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="40" y="9" width="3" height="5" fill="#ff3c3c" />
+                        <line x1="41.5" y1="7" x2="41.5" y2="16" stroke="#ff3c3c" strokeWidth="0.5" />
 
-                        <rect x="50" y="4" width="3" height="8" fill="#5010FF" />
-                        <line x1="51.5" y1="2" x2="51.5" y2="14" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="50" y="4" width="3" height="8" fill="#00ff4c" />
+                        <line x1="51.5" y1="2" x2="51.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
 
-                        <rect x="60" y="10" width="3" height="4" fill="#5010FF" />
-                        <line x1="61.5" y1="8" x2="61.5" y2="16" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="60" y="10" width="3" height="4" fill="#ff3c3c" />
+                        <line x1="61.5" y1="8" x2="61.5" y2="16" stroke="#ff3c3c" strokeWidth="0.5" />
 
-                        <rect x="70" y="6" width="3" height="6" fill="#5010FF" />
-                        <line x1="71.5" y1="4" x2="71.5" y2="14" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="70" y="6" width="3" height="6" fill="#00ff4c" />
+                        <line x1="71.5" y1="4" x2="71.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
 
-                        <rect x="80" y="9" width="3" height="5" fill="#5010FF" />
-                        <line x1="81.5" y1="7" x2="81.5" y2="16" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="80" y="9" width="3" height="5" fill="#ff3c3c" />
+                        <line x1="81.5" y1="7" x2="81.5" y2="16" stroke="#ff3c3c" strokeWidth="0.5" />
 
-                        <rect x="90" y="5" width="3" height="7" fill="#5010FF" />
-                        <line x1="91.5" y1="3" x2="91.5" y2="14" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="90" y="5" width="3" height="7" fill="#00ff4c" />
+                        <line x1="91.5" y1="3" x2="91.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
 
                         {/* Velas de opções binárias - Segunda metade (espelhada para continuar o padrão) */}
-                        <rect x="110" y="6" width="3" height="6" fill="#5010FF" />
-                        <line x1="111.5" y1="4" x2="111.5" y2="14" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="110" y="6" width="3" height="6" fill="#00ff4c" />
+                        <line x1="111.5" y1="4" x2="111.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
 
-                        <rect x="120" y="8" width="3" height="6" fill="#5010FF" />
-                        <line x1="121.5" y1="6" x2="121.5" y2="16" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="120" y="8" width="3" height="6" fill="#ff3c3c" />
+                        <line x1="121.5" y1="6" x2="121.5" y2="16" stroke="#ff3c3c" strokeWidth="0.5" />
 
-                        <rect x="130" y="5" width="3" height="7" fill="#5010FF" />
-                        <line x1="131.5" y1="3" x2="131.5" y2="14" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="130" y="5" width="3" height="7" fill="#00ff4c" />
+                        <line x1="131.5" y1="3" x2="131.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
 
-                        <rect x="140" y="9" width="3" height="5" fill="#5010FF" />
-                        <line x1="141.5" y1="7" x2="141.5" y2="16" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="140" y="9" width="3" height="5" fill="#ff3c3c" />
+                        <line x1="141.5" y1="7" x2="141.5" y2="16" stroke="#ff3c3c" strokeWidth="0.5" />
 
-                        <rect x="150" y="4" width="3" height="8" fill="#5010FF" />
-                        <line x1="151.5" y1="2" x2="151.5" y2="14" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="150" y="4" width="3" height="8" fill="#00ff4c" />
+                        <line x1="151.5" y1="2" x2="151.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
 
-                        <rect x="160" y="10" width="3" height="4" fill="#5010FF" />
-                        <line x1="161.5" y1="8" x2="161.5" y2="16" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="160" y="10" width="3" height="4" fill="#ff3c3c" />
+                        <line x1="161.5" y1="8" x2="161.5" y2="16" stroke="#ff3c3c" strokeWidth="0.5" />
 
-                        <rect x="170" y="6" width="3" height="6" fill="#5010FF" />
-                        <line x1="171.5" y1="4" x2="171.5" y2="14" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="170" y="6" width="3" height="6" fill="#00ff4c" />
+                        <line x1="171.5" y1="4" x2="171.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
 
-                        <rect x="180" y="9" width="3" height="5" fill="#5010FF" />
-                        <line x1="181.5" y1="7" x2="181.5" y2="16" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="180" y="9" width="3" height="5" fill="#ff3c3c" />
+                        <line x1="181.5" y1="7" x2="181.5" y2="16" stroke="#ff3c3c" strokeWidth="0.5" />
 
-                        <rect x="190" y="5" width="3" height="7" fill="#5010FF" />
-                        <line x1="191.5" y1="3" x2="191.5" y2="14" stroke="#5010FF" strokeWidth="0.5" />
+                        <rect x="190" y="5" width="3" height="7" fill="#00ff4c" />
+                        <line x1="191.5" y1="3" x2="191.5" y2="14" stroke="#00ff4c" strokeWidth="0.5" />
 
                         {/* Linha de tendência */}
                         <path d="M0,10 L10,9 L20,11 L30,8 L40,12 L50,7 L60,13 L70,9 L80,12 L90,8 L100,10 L110,9 L120,11 L130,8 L140,12 L150,7 L160,13 L170,9 L180,12 L190,8 L200,10" stroke="#5010FF" strokeWidth="0.5" fill="none" strokeDasharray="2,1" />
