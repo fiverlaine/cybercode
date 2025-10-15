@@ -293,7 +293,7 @@ function App() {
   // Função para gerar o código fixo V404F
   const generateRandomCode = () => {
     // Retorna sempre o código fixo V404F
-    return "G917F";
+    return "A211Y";
   };
 
   // Função para simular efeito de embaralhamento para o código de segurança
