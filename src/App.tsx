@@ -625,8 +625,8 @@ function App() {
     // Escolher um nome aleatório
     const randomName = brazilianNames[Math.floor(Math.random() * brazilianNames.length)];
 
-    // Escolher um valor aleatório (R$1029 ou R$1031)
-    const amount = Math.random() < 0.5 ? "R$1029" : "R$1031";
+    // Valor fixo de saque
+    const amount = "R$1000";
 
     // Criar a notificação
     const newNotification: WithdrawalNotification = {
