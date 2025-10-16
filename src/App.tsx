@@ -290,10 +290,19 @@ function App() {
     return colors[Math.floor(Math.random() * colors.length)];
   };
 
-  // Função para gerar o código fixo V404F
+  // Função para gerar códigos aleatórios no formato [Letra][3 números][Letra]
   const generateRandomCode = () => {
-    // Retorna sempre o código fixo V404F
-    return "A211Y";
+    // Gerar primeira letra aleatória (A-Z)
+    const firstLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+    
+    // Gerar 3 números aleatórios (0-9)
+    const numbers = Array.from({ length: 3 }, () => Math.floor(Math.random() * 10)).join('');
+    
+    // Gerar segunda letra aleatória (A-Z)
+    const secondLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+    
+    // Retornar código no formato [Letra][3 números][Letra]
+    return `${firstLetter}${numbers}${secondLetter}`;
   };
 
   // Função para simular efeito de embaralhamento para o código de segurança

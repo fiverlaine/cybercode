@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Este projeto implementa um gerador de código de segurança com uma interface estética "hacker", utilizando React e TailwindCSS. O design segue um tema escuro com detalhes em neon (verde/azul) e uma animação de matriz (estilo Matrix) no background para criar uma atmosfera cibernética e tecnológica. O aplicativo gera o código de segurança específico "H785X" com uma animação de embaralhamento e digitação.
+Este projeto implementa um gerador de código de segurança com uma interface estética "hacker", utilizando React e TailwindCSS. O design segue um tema escuro com detalhes em neon (verde/azul) e uma animação de matriz (estilo Matrix) no background para criar uma atmosfera cibernética e tecnológica.
 
 ## Componentes Principais
 
@@ -13,18 +13,28 @@ Um componente de plano de fundo que cria o efeito de "chuva de códigos" inspira
 Gerencia o estado da aplicação e implementa toda a lógica de geração do código de segurança. Inclui:
 
 - Animações de loading durante o processamento
-- Geração do código de segurança "H785X" com animação
+- Geração de códigos de segurança aleatórios no formato [Letra][3 números][Letra] (ex: V872G)
 - Funcionalidade de copiar para a área de transferência
 
 ## Lógica de Negócio
 
 ### Geração de Código de Segurança
-- Gera o código de segurança específico "H785X"
+- **ATUALIZADO**: Gera códigos de segurança aleatórios no formato [Letra][3 números][Letra]
+- Cada código é único e gerado dinamicamente a cada solicitação
+- Formato: Uma letra maiúscula (A-Z) + três dígitos (0-9) + uma letra maiúscula (A-Z)
+- Exemplos: V872G, A123B, Z999X, M456N
 - Implementa animações visuais para simular o processo de geração
 - Fornece feedback visual durante todo o processo
 
+### Algoritmo de Geração Aleatória
+A função `generateRandomCode()` implementa a seguinte lógica:
+1. **Primeira letra**: Gera uma letra maiúscula aleatória (A-Z) usando `String.fromCharCode(65 + Math.floor(Math.random() * 26))`
+2. **Três números**: Gera três dígitos aleatórios (0-9) usando `Array.from({ length: 3 }, () => Math.floor(Math.random() * 10))`
+3. **Segunda letra**: Gera outra letra maiúscula aleatória (A-Z)
+4. **Concatenação**: Combina todos os elementos no formato final
+
 ### Efeitos Visuais na Geração do Código
-- **Efeito de Embaralhamento para Código**: O código de segurança "H785X" é gerado com um efeito de embaralhamento de caracteres aleatórios.
+- **Efeito de Embaralhamento para Código**: O código de segurança é gerado com um efeito de embaralhamento de caracteres aleatórios.
 - **Efeito de Digitação para Código**: Após o embaralhamento, o código é "digitado" caractere por caractere, com uma velocidade mais lenta para enfatizar sua importância.
 - **Efeitos Sonoros**: Sons sutis de digitação são reproduzidos durante os efeitos de digitação, aumentando a sensação de interatividade.
 
@@ -71,12 +81,20 @@ Gerencia o estado da aplicação e implementa toda a lógica de geração do có
 
 ### Segurança
 - Geração de código puramente frontend (não há persistência ou envio de dados)
+- **ATUALIZADO**: Códigos verdadeiramente aleatórios garantem maior segurança
+- Cada código gerado é único e imprevisível
+
+### Melhorias Implementadas
+- ✅ **Geração de códigos aleatórios**: Substituído o código fixo por geração dinâmica
+- ✅ **Formato padronizado**: Implementado o formato [Letra][3 números][Letra]
+- ✅ **Aleatoriedade garantida**: Cada execução gera um código único
 
 ### Melhorias Futuras Possíveis
-- Opção para gerar diferentes códigos de segurança
+- Opção para personalizar o formato do código (mais/menos dígitos)
 - Armazenamento local dos códigos gerados para uso futuro
 - Mais opções de personalização visual (temas alternativos)
 - Adição de mais efeitos visuais e sonoros
+- Histórico de códigos gerados
 
 ## Tecnologias Utilizadas
 
