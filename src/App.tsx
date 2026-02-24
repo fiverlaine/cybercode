@@ -59,9 +59,7 @@ const MatrixBackground = () => {
     const binaryDigits: { x: number; y: number; value: string; size: number; opacity: number; speed: number }[] = [];
     const digitCount = 50; // Número de dígitos binários
 
-    // Cores para os candles
-    const upColor = '#00ff4c'; // Verde para alta
-    const downColor = '#ff3c3c'; // Vermelho para baixa
+    // Cores para os candles removidas pois não são usadas externamente
 
     // Inicializar padrões de velas
     for (let i = 0; i < patternCount; i++) {
@@ -268,7 +266,6 @@ function App() {
   const [codeShufflingEffect, setCodeShufflingEffect] = useState<boolean>(false);
   const [shuffleColor, setShuffleColor] = useState<string>("text-yellow-400");
   const [codeGenerated, setCodeGenerated] = useState<boolean>(false);
-  const [showIframe, setShowIframe] = useState<boolean>(false);
   const [codeCopied, setCodeCopied] = useState<boolean>(false);
   const [codeGeneratedTime, setCodeGeneratedTime] = useState<number | null>(null);
   // Estado de detecção de iOS removido
@@ -377,7 +374,6 @@ function App() {
     setIsGenerating(true);
     setDisplayedCode("");
     setShowButton(false); // Esconde o botão ao iniciar a geração
-    setShowIframe(false); // Esconde o iframe ao gerar novo código
     setCodeGenerated(false); // Reseta o estado de código gerado
     setCodeCopied(false); // Reseta o estado de código copiado
 
@@ -433,66 +429,11 @@ function App() {
 
   // Função para lidar com o clique no botão acessar corretora
   const handleBrokerClick = () => {
-    setShowIframe(!showIframe); // Alterna a exibição do iframe
+    window.open('https://versobx.com/pt/signUp', '_blank');
     playClickSound();
-
-    // Prevenir que a página role para o topo quando o iframe é exibido
-    if (!showIframe) {
-      // Adiciona um evento para prevenir o comportamento padrão de rolagem
-      setTimeout(() => {
-        const iframeContainer = document.querySelector('.iframe-container');
-        if (iframeContainer) {
-          iframeContainer.addEventListener('click', (e) => {
-            e.stopPropagation();
-          });
-        }
-      }, 500);
-    }
   };
 
-  // Função para atualizar o iframe
-  const handleRefreshIframe = () => {
-    const iframe = document.querySelector('iframe');
-    if (iframe) {
-      // Reproduzir som de clique
-      playClickSound();
 
-      // Mostrar feedback visual
-      const button = document.querySelector('button.text-\\[\\#00c3ff\\]');
-      if (button) {
-        button.textContent = 'ATUALIZANDO...';
-        button.classList.add('animate-pulse');
-      }
-
-      // Método simples e direto: recarregar o iframe
-      try {
-        // Primeiro, tenta usar o método contentWindow.location.reload()
-        if (iframe.contentWindow) {
-          iframe.contentWindow.location.reload();
-        }
-      } catch (error) {
-        // Se falhar devido a restrições de segurança, usa o método alternativo
-        // Armazenar a URL atual
-        const currentSrc = iframe.src;
-
-        // Definir um src temporário e depois restaurar para forçar a atualização
-        iframe.src = 'about:blank';
-
-        // Usar setTimeout para garantir que o iframe seja limpo antes de recarregar
-        setTimeout(() => {
-          iframe.src = currentSrc;
-        }, 50);
-      }
-
-      // Restaurar o texto do botão após um tempo
-      setTimeout(() => {
-        if (button) {
-          button.textContent = 'ATUALIZAR';
-          button.classList.remove('animate-pulse');
-        }
-      }, 1500);
-    }
-  };
 
   // Efeito sonoro para cliques
   const playClickSound = () => {
@@ -512,7 +453,7 @@ function App() {
 
   // Reproduzir som de digitação enquanto o efeito está ativo
   useEffect(() => {
-    let typeSoundInterval: number | null = null;
+    let typeSoundInterval: any = null;
 
     if (codeTypingEffect) {
       typeSoundInterval = setInterval(playTypeSound, 100);
@@ -525,7 +466,7 @@ function App() {
 
   // Efeito para mover o gráfico durante a geração do código
   useEffect(() => {
-    let animationInterval: number | null = null;
+    let animationInterval: any = null;
 
     if (isGenerating || codeTypingEffect || codeShufflingEffect) {
       animationInterval = setInterval(() => {
@@ -540,85 +481,7 @@ function App() {
     };
   }, [isGenerating, codeTypingEffect, codeShufflingEffect]);
 
-  // Efeito para evitar que a página role para o topo quando o iframe é exibido
-  useEffect(() => {
-    if (showIframe) {
-      // Armazena a posição de rolagem atual
-      let lastScrollPosition = window.scrollY;
 
-      // Função para verificar e restaurar a posição de rolagem
-      const checkScrollPosition = () => {
-        // Se a página rolou para o topo e tínhamos uma posição anterior
-        if (window.scrollY === 0 && lastScrollPosition > 10) {
-          // Restaura a posição anterior
-          window.scrollTo(0, lastScrollPosition);
-        } else {
-          // Atualiza a última posição conhecida
-          lastScrollPosition = window.scrollY;
-        }
-      };
-
-      // Configura um intervalo para verificar a posição de rolagem
-      const scrollCheckInterval = setInterval(checkScrollPosition, 100);
-
-      // Adiciona um evento específico para rolagem
-      const handleScroll = () => {
-        // Se a página rolou para o topo e tínhamos uma posição anterior
-        if (window.scrollY === 0 && lastScrollPosition > 10) {
-          // Restaura a posição anterior
-          setTimeout(() => {
-            window.scrollTo(0, lastScrollPosition);
-          }, 10);
-        } else {
-          // Atualiza a última posição conhecida
-          lastScrollPosition = window.scrollY;
-        }
-      };
-
-      // Adiciona o evento de rolagem
-      window.addEventListener('scroll', handleScroll, true);
-
-      // Ajusta o iframe para mostrar o conteúdo completo
-      const adjustIframe = () => {
-        const iframe = document.querySelector('iframe');
-        if (iframe) {
-          iframe.style.transform = 'none';
-          iframe.style.width = '100%';
-          iframe.style.marginLeft = '0';
-          iframe.style.height = '650px';
-        }
-      };
-
-      // Ajusta o iframe inicialmente
-      adjustIframe();
-
-      // Ajusta o iframe quando a tela for redimensionada
-      window.addEventListener('resize', adjustIframe);
-
-      // Adiciona um script global para prevenir rolagem para o topo
-      const script = document.createElement('script');
-      script.textContent = `
-        // Sobrescreve a função scrollTo para evitar rolagem para o topo
-        const originalScrollTo = window.scrollTo;
-        window.scrollTo = function(x, y) {
-          if (y === 0 && window.scrollY > 10) {
-            // Ignora tentativas de rolar para o topo
-            return;
-          }
-          originalScrollTo.apply(this, arguments);
-        };
-      `;
-      document.head.appendChild(script);
-
-      return () => {
-        // Remove os eventos quando o iframe é fechado
-        clearInterval(scrollCheckInterval);
-        window.removeEventListener('scroll', handleScroll, true);
-        window.removeEventListener('resize', adjustIframe);
-        document.head.removeChild(script);
-      };
-    }
-  }, [showIframe]);
 
   // Função para gerar uma notificação aleatória
   const generateRandomNotification = useCallback(() => {
@@ -997,56 +860,7 @@ function App() {
             )}
           </div>
 
-          {/* Iframe da corretora (abaixo do gerador de código) */}
-          {showIframe && (
-            <div className="mt-12 w-[calc(100vw-10px)] sm:w-full md:h-auto lg:h-auto xl:h-auto border border-[#5010FF]/20 rounded-lg relative backdrop-blur-sm bg-[#080619]/90 shadow-xl shadow-[#5010FF]/10 md:w-[98%] lg:w-[99%] xl:w-[100%] mx-auto" style={{ overflowX: 'hidden', overflowY: 'hidden', position: 'relative', left: '50%', transform: 'translateX(-50%)' }}>
-              {/* Efeito de brilho nos cantos */}
-              <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-[#5010FF] rounded-tl-lg"></div>
-              <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-[#5010FF] rounded-tr-lg"></div>
-              <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-[#5010FF] rounded-bl-lg"></div>
-              <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-[#5010FF] rounded-br-lg"></div>
 
-              {/* Efeito de brilho no topo */}
-              <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#5010FF] to-transparent"></div>
-
-              {/* Indicadores binários nos cantos */}
-              <div className="absolute top-10 left-6 text-[#5010FF]/10 text-4xl font-bold">1</div>
-              <div className="absolute bottom-10 right-6 text-[#5010FF]/10 text-4xl font-bold">0</div>
-
-              <div className="absolute top-0 left-0 w-full bg-[#000000]/90 p-3 flex justify-between items-center z-10 border-b border-[#5010FF]/20">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-[#e63946]"></div>
-                  <div className="w-2 h-2 rounded-full bg-[#f1c453]"></div>
-                  <div className="w-2 h-2 rounded-full bg-[#5010FF]"></div>
-                </div>
-                <span className="text-xs text-[#5010FF] font-semibold tracking-wider">CORRETORA</span>
-                <button
-                  onClick={handleRefreshIframe}
-                  className="text-[#5010FF] hover:text-[#5010FF]/80 text-xs px-3 py-1 rounded-md hover:bg-[#080619]/90 border border-[#5010FF]/20 transition-colors"
-                >
-                  ATUALIZAR
-                </button>
-              </div>
-
-              <div className="pt-12 w-full overflow-hidden iframe-container" style={{ position: 'relative', height: 'auto', minHeight: '500px' }}>
-                <iframe
-                  src="https://versobinary.com/pt/signUp"
-                  className="w-full h-full"
-                  title="Corretora"
-                  allow="cookies"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-storage-access-by-user-activation allow-modals allow-downloads allow-popups-to-escape-sandbox"
-                  style={{
-                    overflow: 'auto',
-                    border: 'none',
-                    width: '100%',
-                    height: '650px',
-                    display: 'block'
-                  }}
-                />
-              </div>
-            </div>
-          )}
         </div>
 
         <footer className="mt-16 text-center">
